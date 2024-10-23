@@ -77,7 +77,8 @@ export class SaveProductComponent implements OnInit {
     page_title: "",
     meta_keywords: "",
     meta_description: "",
-    removeMedia:[]
+    removeMedia:[],
+    thumbnail:""
 
   };
 
@@ -137,13 +138,13 @@ export class SaveProductComponent implements OnInit {
       reader.onload = (e: any) => {
         this.coverIcon = e.target.result;
       };
-      this.productDetailObj.icon = file;
+      this.productDetailObj.thumbnail = file;
       reader.readAsDataURL(file);
     }
   }
 
   removeCoverIcon() {
-    this.productDetailObj.icon = "";
+    this.productDetailObj.thumbnail = "";
     this.coverIcon = '';
   }
 

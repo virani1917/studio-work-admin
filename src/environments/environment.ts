@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  url: 'https://www.studioworks.co.in/api/Admin_Services/',
-  baseURL : "http://192.168.1.45/studio-work-admin/",
-  // url: 'http://192.168.1.27/studio_works/api/Admin_Services/'
+  // url: 'https://www.studioworks.co.in/api/Admin_Services/',
+  baseURL : "http://192.168.1.77/studio-work-admin/",
+  url: 'http://192.168.1.77/studio_works/api/Admin_Services/'
 };
 
 /*
