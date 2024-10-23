@@ -13,61 +13,65 @@
 
 /* Fonts Embeded */
 
-/* Poppins */
+/* montserrat */
+
+
 @font-face {
-    font-family: 'Poppins-SemiBold';
-    src: url('assets/fonts/poppins/Poppins-SemiBold.woff2') format('woff2'),
-        url('assets/fonts/poppins/Poppins-SemiBold.woff') format('woff');
+    font-family: 'Montserrat-SemiBold';
+    src: url('assets/fonts/montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+        url('assets/fonts/montserrat/Montserrat-SemiBold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
 
+
 @font-face {
-    font-family: 'Poppins-Black';
-    src: url('assets/fonts/poppins/Poppins-Black.woff2') format('woff2'),
-        url('assets/fonts/poppins/Poppins-Black.woff') format('woff');
+    font-family: 'Montserrat-Black';
+    src: url('assets/fonts/montserrat/Montserrat-Black.woff2') format('woff2'),
+        url('assets/fonts/montserrat/Montserrat-Black.woff') format('woff');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
 }
 
+
+
 @font-face {
-    font-family: 'Poppins-Bold';
-    src: url('assets/fonts/poppins/Poppins-Bold.woff2') format('woff2'),
-        url('assets/fonts/poppins/Poppins-Bold.woff') format('woff');
+    font-family: 'Montserrat-Bold';
+    src: url('assets/fonts/montserrat/Montserrat-Bold.woff2') format('woff2'),
+        url('assets/fonts/montserrat/Montserrat-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Poppins-Light';
-    src: url('assets/fonts/poppins/Poppins-Light.woff2') format('woff2'),
-        url('assets/fonts/poppins/Poppins-Light.woff') format('woff');
+    font-family: 'Montserrat-Light';
+    src: url('assets/fonts/montserrat/Montserrat-Light.woff2') format('woff2'),
+        url('assets/fonts/montserrat/Montserrat-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Poppins-Medium';
-    src: url('assets/fonts/poppins/Poppins-Medium.woff2') format('woff2'),
-        url('assets/fonts/poppins/Poppins-Medium.woff') format('woff');
+    font-family: 'Montserrat-Medium';
+    src: url('assets/fonts/montserrat/Montserrat-Medium.woff2') format('woff2'),
+        url('assets/fonts/montserrat/Montserrat-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Poppins-Regular';
-    src: url('assets/fonts/poppins/Poppins-Regular.woff2') format('woff2'),
-        url('assets/fonts/poppins/Poppins-Regular.woff') format('woff');
+    font-family: 'Montserrat-Regular';
+    src: url('assets/fonts/montserrat/Montserrat-Regular.woff2') format('woff2'),
+        url('assets/fonts/montserrat/Montserrat-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-
 
 
 /* Root CSS  */
@@ -93,12 +97,12 @@
     --content-font-size: 1.15rem;
     --link-font-size: 1rem;
     /* font-families */
-    --light-font-family: "Poppins-Light";
-    --regular-font-family: "Poppins-Regular";
-    --medium-font-family: "Poppins-Medium";
-    --semibold-font-family: "Poppins-SemiBold";
-    --bold-font-family: "Poppins-Bold";
-    --black-font-family: "Poppins-Black";
+    --light-font-family: 'Montserrat-Light';
+    --regular-font-family: 'Montserrat-Regular';
+    --medium-font-family: 'Montserrat-Medium';
+    --semibold-font-family: 'Montserrat-SemiBold';
+    --bold-font-family: 'Montserrat-Bold';
+    --black-font-family: 'Montserrat-Black';
     /* other */
     --common-transition: all 0.6s ease;
 
