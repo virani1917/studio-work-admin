@@ -275,7 +275,43 @@
                                     </ck-editor>
                                 </div>
                             </div>
+
+                            <div class="">
+                                <label for="icon" class="form-title-label semibold-fonts"> Thumbnail </label>
+                                <div class="formInput ImagePreviewBox relative">
+                                    <div class="form-input-icon image-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            image
+                                        </span>
+                                    </div>
+    
+                                    <input class="form-control" type="file" (change)="onCoverIconChange($event)"
+                                        [ngClass]="{
+                                        'error': addProductForm.submitted && productDetailObj.thumbnail != ''
+                                      }" id="icon" name="icon" accept="image/png, image/jpeg">
+                                    <div class="previewWrapper">
+                                        <p *ngIf="productDetailObj.thumbnail == '' " style='color : #00000050;'>
+                                            Upload Thumbnail
+                                        </p>
+                                        <div *ngIf="productDetailObj.thumbnail != '' ">
+                                            <div *ngIf="coverIcon">
+                                                <img [src]="coverIcon" alt="">
+                                            </div>
+                                            <div *ngIf="!coverIcon">
+                                                <img [src]="this.productDetailObj.thumbnail" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="remove-class" *ngIf="this.productDetailObj.thumbnail !== ''"
+                                        (click)="removeCoverIcon();">
+                                        Remove Icon
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        
+
                         <div class="">
                             <div class="form-flex-2">
                                 <label for="image" class="form-title-label semibold-fonts"> Gallery Image </label>
