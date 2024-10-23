@@ -1,0 +1,370 @@
+<div class="relative">
+    <div class="inner-flex inner-flex-medium">
+        <div class="section-title">
+            <h2 *ngIf="!is_edit"> Add Product </h2>
+            <h2 *ngIf="is_edit"> Update Product </h2>
+        </div>
+        <div class="AddWrapper">
+            <div class="container-fluid white-bg border-radius">
+                <form name="addProductForm" id="addProductForm" (ngSubmit)="addProduct(addProductForm.form)"
+                    #addProductForm="ngForm" novalidate class="inner-flex inner-flex-medium">
+                    <div class="inner-flex inner-flex-medium">
+                        <div class="section-paragraph">
+                            <p class="semibold-fonts">Basic Product Details</p>
+                        </div>
+                        <div class="three-col-grid">
+                            <div>
+                                <label for="name" class="form-title-label semibold-fonts"> Name
+                                    <span class="star">*</span>
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            inventory_2
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Name" [ngClass]="{
+                                        'error': addProductForm.submitted && productDetailObj.name == '' }"
+                                        [(ngModel)]="productDetailObj.name" #name="ngModel" id="name" name="name"
+                                        required>
+                                </div>
+                            </div>
+
+                            <!-- <span class="star">*</span> -->
+                            <!-- <div>
+                                <label for="sequence" class="form-title-label semibold-fonts"> Sequence
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            home
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Sequence" 
+                                        [(ngModel)]="productDetailObj.sequence" #sequence="ngModel" id="sequence"
+                                        name="sequence">
+                                </div>
+                            </div> -->
+
+                            <div>
+
+                                <label for="code" class="form-title-label semibold-fonts"> Code
+                                    
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            qr_code
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter code"
+                                        [(ngModel)]="productDetailObj.code" #dimensions="ngModel" id="code" name="code">
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <label for="dimensions" class="form-title-label semibold-fonts"> Dimensions
+                                    <!-- <span class="star">*</span> -->
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            design_services
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Dimensions"
+                                        [(ngModel)]="productDetailObj.dimensions" #dimensions="ngModel" id="dimensions"
+                                        name="dimensions">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="color" class="form-title-label semibold-fonts"> Color
+                                    <!-- <span class="star">*</span> -->
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            palette
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter color"
+                                        [(ngModel)]="productDetailObj.color" #color="ngModel" id="color" name="color">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="finish" class="form-title-label semibold-fonts"> Finish
+                                    <!-- <span class="star">*</span> -->
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            format_paint
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Finish"
+                                        [(ngModel)]="productDetailObj.finish" #finish="ngModel" id="finish"
+                                        name="finish">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="tagline" class="form-title-label semibold-fonts"> Tagline
+                                    <!-- <span class="star">*</span> -->
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            clear_all
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter tagline"
+                                        [(ngModel)]="productDetailObj.tagline" #tagline="ngModel" id="tagline"
+                                        name="tagline">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="sale_price" class="form-title-label semibold-fonts"> Sale price
+                                    <span class="star">*</span>
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            payments
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Sale price"
+                                        [(ngModel)]="productDetailObj.sale_price" #sale_price="ngModel" id="sale_price"
+                                        name="sale_price" (keypress)=_keyPress($event)>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <label for="mrp_price" class="form-title-label semibold-fonts"> MRP price
+                                    <span class="star">*</span>
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            payments
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter MRP price"
+                                        [(ngModel)]="productDetailObj.mrp_price" #mrp_price="ngModel" id="mrp_price"
+                                        name="mrp_price" (keypress)=_keyPress($event)>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="design_type" class="form-title-label semibold-fonts"> Design type
+                                    <!-- <span class="star">*</span> -->
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            text_fields
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter design type"
+                                        [(ngModel)]="productDetailObj.design_type" #design_type="ngModel"
+                                        id="design_type" name="design_type">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="category_id" class="form-title-label semibold-fonts"> Category
+                                    <span class="star">*</span>
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            category
+                                        </span>
+                                    </div>
+                                    <select class="form-control" #category_id="ngModel" id="category" name="category"
+                                        tabindex="2" [(ngModel)]="productDetailObj.category_id"
+                                        [ngClass]="{
+                                            'error': addProductForm.submitted &&  productDetailObj.category_id == '' }">
+                                        <option value="" selected> Select products category </option>
+
+                                        <ng-container *ngFor="let category of productCategoryList">
+                                            <option [value]="category.id" >{{category.category}}</option>
+
+                                            <ng-container *ngFor="let subCategory of category.child_categories">
+                                                <option [value]="subCategory.id">&nbsp;&nbsp;&nbsp;&nbsp;- {{subCategory.category}}</option>
+                                                <ng-container *ngIf="subCategory.child_categories && subCategory.child_categories.length > 0">
+                                                    <ng-container *ngFor="let subCategory1 of subCategory.child_categories">
+                                                        <option [value]="subCategory1.id">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                           - {{subCategory1.category}}</option>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </ng-container>
+                                        </ng-container>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+
+                        <div class="three-col-grid">
+                            <div>
+                                <label for="care_instructions" class="form-title-label semibold-fonts"> Care
+                                    instructions
+                                   
+                                </label>
+                                <div class="formInput relative">
+                                    
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor"
+                                        name="care_instructions" #care_instructions="ngModel"
+                                        [(ngModel)]="productDetailObj.care_instructions">
+                                    </ck-editor>
+                                  
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="faqs" class="form-title-label semibold-fonts"> Faqs
+                                   
+                                </label>
+                                <div class="formInput relative">
+                                   
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor" name="faqs"
+                                        #faqs="ngModel" [(ngModel)]="productDetailObj.faqs">
+                                    </ck-editor>
+                                  
+                                </div>
+                            </div>
+                            <div>
+                                <label for="assembly" class="form-title-label semibold-fonts"> Assembly
+                                    <span class="star">*</span>
+                                </label>
+                                <div class="formInput relative">
+                                  
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor" name="assembly"
+                                        #assembly="ngModel" [(ngModel)]="productDetailObj.assembly">
+                                    </ck-editor>
+                                    
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="specifications" class="form-title-label semibold-fonts"> Specifications
+                                  
+                                </label>
+                                <div class="formInput relative">
+                                 
+
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor"
+                                        name="specifications" #specifications="ngModel"
+                                        [(ngModel)]="productDetailObj.specifications">
+                                    </ck-editor>
+                                  
+                                </div>
+
+                            </div>
+                            <div>
+                                <label for="description" class="form-title-label semibold-fonts">
+                                    Description</label>
+                                <div class="formInput relative">
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor"
+                                        name="description" #description="ngModel"
+                                        [(ngModel)]="productDetailObj.description">
+                                    </ck-editor>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="form-flex-2">
+                                <label for="image" class="form-title-label semibold-fonts"> Gallery Image </label>
+                                <div class="formInput ImagePreviewBox ImagePreviewBox-2 relative">
+                                    <input class="form-control" type="file" (change)="onMediaChange($event)" id="image"
+                                        name="image" multiple accept="image/png, image/jpeg">
+                                    <div class="previewWrapper gallary-images">
+                                        <p style='color : #00000050;'>
+                                            Upload Gallery Image
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="mediaGrid">
+                            <div *ngFor="let media of mediaArray; let i = index" class="mediaGallery relative">
+                                <span class="material-symbols-outlined" (click)="removeMedia(i, media.id)">
+                                    delete
+                                </span>
+                                <img [src]="media.image" alt="" style="aspect-ratio: 1; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="section-paragraph">
+                                <p class="semibold-fonts">Product SEO Details</p>
+                            </div>
+                        </div>
+                        <div class="three-col-grid">
+                            <div>
+                                <label for="page_title" class="form-title-label semibold-fonts"> SEO Title
+
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            language
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter SEO Titile "
+                                        [(ngModel)]="productDetailObj.page_title" #page_title="ngModel" id="page_title"
+                                        name="page_title">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="meta_description" class="form-title-label semibold-fonts"> SEO
+                                    Description
+
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            menu_book
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter SEO Description"
+                                        [(ngModel)]="productDetailObj.meta_description" #meta_description="ngModel"
+                                        id="meta_description" name="meta_description">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="meta_keywords" class="form-title-label semibold-fonts"> SEO Keywords
+
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            abc
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter SEO Keywords"
+                                        [(ngModel)]="productDetailObj.meta_keywords" #meta_keywords="ngModel"
+                                        id="meta_keywords" name="meta_keywords">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="three-col-grid">
+                            <button type="submit" class="sangath-template-button w100" style="margin-top : 1rem;">
+                                <span class="material-symbols-outlined">
+                                    save
+                                </span>
+                                {{isprojectSave ? "Please Wait..." : "Save Product" }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

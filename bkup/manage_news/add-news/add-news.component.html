@@ -1,0 +1,120 @@
+<div class="relative">
+    <div class="inner-flex inner-flex-big">
+        <div class="section-title">
+            <h2> Add News & Media </h2>
+        </div>
+        <div class="AddWrapper">
+            <div class="container-fluid white-bg border-radius">
+                <form name="addNewsForm" id="addNewsForm" (ngSubmit)="addNews(addNewsForm.form)"
+                    #addNewsForm="ngForm" novalidate class="inner-flex inner-flex-medium">
+                    <div class="inner-flex inner-flex-medium">
+                        <div class="three-col-grid">
+                            <div>
+                                <label for="title" class="form-title-label semibold-fonts"> Title
+                                    <span class="star">*</span>
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                            home
+                                        </span>
+                                    </div>
+                                    <input class="form-control" [ngClass]="{
+                                        'error': addNewsForm.submitted && title.invalid
+                                      }" type="text" placeholder="Enter title"
+                                        [(ngModel)]="newsObj.title" #title="ngModel" id="title" name="title"
+                                         required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="location" class="form-title-label semibold-fonts"> Redirection Link
+                                    
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                                groups
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Redirection Link "
+                                        [(ngModel)]="newsObj.redirection_link" #redirection_link="ngModel" id="redirection_link"
+                                        name="redirection_link">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="location" class="form-title-label semibold-fonts"> Youtube Link
+                                    
+                                </label>
+                                <div class="formInput relative">
+                                    <div class="form-input-icon form-input-icon-left">
+                                        <span class="material-symbols-outlined">
+                                                groups
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Enter Youtube Link "
+                                        [(ngModel)]="newsObj.youtube_video_link" #youtube_video_link="ngModel" id="youtube_video_link"
+                                        name="youtube_video_link">
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <div class="three-col-grid">
+                            <div *ngIf="newsObj.description && newsObj.id" >
+                                <label for="description" class="form-title-label semibold-fonts"> Description </label>
+                                <div class="formInput relative">
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor"
+                                        name="description" #description="ngModel" required
+                                        [(ngModel)]="newsObj.description">
+                                    </ck-editor>
+                                </div>
+                            </div>
+                            <div *ngIf="!newsObj.id" >
+                                <label for="description" class="form-title-label semibold-fonts"> Description </label>
+                                <div class="formInput relative">
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor"
+                                        name="description" #description="ngModel" required
+                                        [(ngModel)]="newsObj.description">
+                                    </ck-editor>
+                                </div>
+                            </div>
+
+                            <div class="relative">
+                                <label for="image" class="form-title-label semibold-fonts">Image </label>
+                                <div class="formInput ImagePreviewBox relative">
+                                    <input class="form-control" type="file" (change)="onCoverIconChange($event)"
+                                        id="image" name="image"  required
+                                        accept="image/png, image/jpeg">
+                                    <div class="previewWrapper">
+                                        <p *ngIf="newsObj.image == '' " style='color : #00000050;'>
+                                            Upload Image
+                                        </p>
+                                        <div *ngIf="newsObj.image != '' ">
+                                            <div *ngIf="coverIcon">
+                                                <img [src]="coverIcon" alt="">
+                                            </div>
+                                            <div *ngIf="!coverIcon">
+                                                <img [src]="this.newsObj.image" alt="">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="remove-class" *ngIf="newsObj.image !== ''" (click)="removeImage();">
+                                        Remove Image
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>
+                        <div class="three-col-grid">
+                                <button type="submit" class="sangath-template-button w100" style="margin-top : 1rem;" >
+                                    <span class="material-symbols-outlined">
+                                        save
+                                        </span>
+                                    {{isteamSave ? "Please Wait..." : "Save News" }}
+                                </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

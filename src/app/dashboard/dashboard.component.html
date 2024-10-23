@@ -1,0 +1,306 @@
+<div class="inner-flex inner-flex-medium">
+	<div class="section-title">
+		<h2>Dashboard</h2>
+	</div>
+	<div class="dashboard-grid">
+		<div class="dashboard-box" *ngIf="localAdmin.id == 1">
+			<a routerLink="/product-list" class="row-flex big-gap aic">
+				<div class="dashboard-icon">
+					<img src="assets/images/warehouse.svg" />
+				</div>
+				<div class="inner-flex small-gap">
+					<div class="dashboard-title">Total Projects</div>
+					<div class="dashboard-numbers">
+						{{ dashboard_counters.total_product }}
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="dashboard-box" *ngIf="localAdmin.id == 1">
+			<a routerLink="/category-list" class="row-flex big-gap aic">
+				<div class="dashboard-icon">
+					<img src="assets/images/franchise.svg" />
+				</div>
+				<div class="inner-flex small-gap">
+					<div class="dashboard-title">Total Categories</div>
+					<div class="dashboard-numbers">
+						{{ dashboard_counters.total_category }}
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="dashboard-box" *ngIf="localAdmin.id == 1">
+			<a routerLink="/news" class="row-flex big-gap aic">
+				<div class="dashboard-icon">
+					<img src="assets/images/items.svg" />
+				</div>
+				<div class="inner-flex small-gap">
+					<div class="dashboard-title">Product Inquiries</div>
+					<div class="dashboard-numbers">
+						{{ dashboard_counters.total_product_inquiry }}
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="dashboard-box">
+			<a routerLink="/inquiry" class="row-flex big-gap aic">
+				<div class="dashboard-icon">
+					<img src="assets/images/category.svg" />
+				</div>
+				<div class="inner-flex small-gap">
+					<div class="dashboard-title">Contact Inquiries</div>
+					<div class="dashboard-numbers">
+						{{ dashboard_counters.total_contact_inquiry }}
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- <div class="dashboard-box">
+            <a routerLink="/inquiry" class="row-flex big-gap aic">
+                <div class="dashboard-icon">
+                    <img src="assets/images/category.svg">
+                </div>
+                <div class="inner-flex small-gap">
+                    <div class="dashboard-title">
+                        Career Inquiries
+                    </div>
+                    <div class="dashboard-numbers">
+                        <!-- {{dashboard_counters.total_career_inquiries}} --
+                    </div>
+                </div>
+            </a>
+        </div> -->
+	</div>
+	<div class="inner-flex inner-flex-small" *ngIf="InquiryList.length > 0">
+		<div class="section-title">
+			<h2></h2>
+		</div>
+		<div class="section-paragraph">
+			<p class="semibold-fonts">Recent Inquiries</p>
+		</div>
+		<div class="listWrapper">
+			<div class="container-fluid white-bg border-radius">
+				<div class="listTable section-content">
+					<table class="w100">
+						<thead>
+							<tr>
+								<th>
+									<p class="semibold-fonts">#</p>
+								</th>
+								<th>
+									<p class="semibold-fonts">Name</p>
+								</th>
+								<th>
+									<p class="semibold-fonts">Type</p>
+								</th>
+								<th>
+									<p class="semibold-fonts">Contact Details</p>
+								</th>
+								<!-- <th>
+									<p class="semibold-fonts">Address</p>
+								</th> -->
+								<th>
+									<p class="semibold-fonts">Comments</p>
+								</th>
+								<!-- <th>
+									<p class="semibold-fonts">Remarks</p>
+								</th> -->
+								<th>
+									<p class="semibold-fonts">Status</p>
+								</th>
+								<th>
+									<p class="semibold-fonts text-right">Action</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let inquiry of InquiryList; let i = index">
+								<td>
+									<p class="">
+										{{ i + 1 }}
+									</p>
+								</td>
+
+								<td>
+									<p class="">
+										{{ inquiry.name }}
+									</p>
+								</td>
+								<td>
+									<p class="">
+										{{ inquiry.type }}
+									</p>
+								</td>
+								<td>
+									<p class="">
+										<a href="tel:{{ inquiry.contact_no }}">
+											{{ inquiry.contact_no }}
+										</a>
+										<br />
+										<a href="mailto:{{ inquiry.email }}">
+											{{ inquiry.email }}
+										</a>
+									</p>
+								</td>
+
+								<!-- <td>
+									<p class="">
+										{{ inquiry.address }}
+									</p>
+								</td> -->
+								<td>
+									<p class="">
+										{{ inquiry.message }}
+									</p>
+								</td>
+								<!-- <td>
+									<p class="">
+										{{ inquiry.remark ? inquiry.remark : "" }}
+									</p>
+								</td> -->
+								<td class="link-font-size">
+									<p class="" *ngIf="inquiry.status == 'Open'" style="color: green">
+										{{ inquiry.status }}
+									</p>
+									<p class="" *ngIf="inquiry.status != 'Open'" style="color: Red">
+										{{ inquiry.status }}
+									</p>
+								</td>
+								<td class="">
+									<div class="actionFlex flex-row alc j-c-end">
+										<a (click)="editPopup(inquiry);">
+											<span class="material-symbols-outlined relative  toggle_on_sec">
+												visibility
+												<div class="hover-title-text link-font-size "    >
+													<p>view</p>
+												</div>
+											</span>
+										</a>
+										<span class="material-symbols-outlined relative  toggle_on_sec"
+											(click)="openRemarkPopup(inquiry.id, inquiry.status)"
+											*ngIf="inquiry.status == 'Open'" style="color: green">
+											toggle_on
+											<div class="hover-title-text link-font-size "
+												*ngIf="inquiry.status == 'Open'">
+												<p>Open</p>
+											</div>
+										</span>
+										<span class="material-symbols-outlined relative toggle_on_sec"
+											(click)="openRemarkPopup(inquiry.id, inquiry.status)"
+											*ngIf="inquiry.status != 'Open'" style="color: red">
+											toggle_off
+											<div class="hover-title-text link-font-size "
+												*ngIf="inquiry.status != 'Open'">
+												<p>Close</p>
+											</div>
+										</span>
+										<!-- <span class="material-symbols-outlined" style="color : red;"
+                                            (click)="deleteinquiry(inquiry)">
+                                            delete
+                                        </span> -->
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="popup-overlay" [class.popup-overlay-active]="editlist" (click)="closeEditlist()"></div>
+<div class="inquire-popup-wrapper" [class.inquiry-popup-wrapper-active]="editlist">
+    <div class="inner-flex inner-flex-medium">
+        <div class="add-flex-sec">
+            <div class="section-title">
+                <h2>Recent inquiry list</h2>
+            </div>
+
+            <div class="close-icon" (click)="closeEditlist()">
+                <span _ngcontent-uuw-c3="" class="material-symbols-outlined"> close </span>
+            </div>
+        </div>
+
+        <div class="inner-flex ">
+            <div class="listTable section-content">
+                <table class="w100" class=" product-inquires-sec">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                <p class="semibold-fonts text-center">#</p>
+                            </th>
+                            <th style="width: 12rem;" class="text-center">
+                                <p class="semibold-fonts">
+                                    Address
+                                </p>
+                            </th>
+                            <th style="width: 6rem;" class="text-center">
+                                <p class="semibold-fonts">
+                                    Remarks
+                                </p>
+                            </th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let inquiry of popupInquiryList; let i = index">
+                            <td>
+                                <p class="">{{i + 1}}</p>
+                            </td>
+                            <td>
+                                <p class="text-center">{{inquiry.address}}</p>
+                            </td>
+                            <td>
+                                <p class="text-center">{{ inquiry.remark ? inquiry.remark : "" }}</p>
+                            </td>
+                          
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<!-- <div
+  class="PopupOverlay"
+  [class.active]="isRemarkPopup"
+  (click)="closeRemarkPopup()"
+></div>
+<div class="deletePopup" [class.active]="isRemarkPopup">
+  <div class="inner-flex alc">
+    <div class="inner-flex inner-flex-smallest" style="width: 100%">
+      <div class="section-subtitle">
+        <h4 class="semibold-fonts">Enter Remark</h4>
+      </div>
+      <div class="section-content" style="width: 100%">
+        <textarea
+          [(ngModel)]="statusObj.remark"
+          rows="4"
+          class="form-control no-padding"
+        ></textarea>
+      </div>
+    </div>
+    <div
+      class="flex-row alc remarkButtonFlex w100 j-c-c"
+      style="margin-top: 1rem"
+    >
+      <button class="sangath-template-button" (click)="closeRemarkPopup()">
+        <span class="material-symbols-outlined"> close </span>
+        Cancel
+      </button>
+      <button
+        class="sangath-template-button sangath-template-button-red"
+        (click)="changeStatus()"
+      >
+        <span class="material-symbols-outlined"> save </span>
+        Submit
+      </button>
+    </div>
+  </div>
+</div> -->

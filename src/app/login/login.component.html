@@ -1,0 +1,70 @@
+<div class="loginComponent">
+    <div class="loginContainer">
+        <div class="loginWrapper">
+            <div class="loginwrapper inner-flex inner-flex-medium">
+                <div class="inner-flex alc">
+                    <div class="sangathLogo">
+                        <img src="assets/images/logos/logo.svg" alt="Studio Sangath Logo">
+                    </div>
+                    <div class="section-content">
+                        <p class="mediu,-fonts">
+                            Login With Your Registered Email Id or Username.
+                        </p>
+                    </div>
+                </div>
+                <form name="loginForm" id="loginForm" (ngSubmit)="adminLogin(loginForm.form)" #loginForm="ngForm"
+                    novalidate class="inner-flex">
+
+                    <div>
+                        <label for="email" class="form-title-label semibold-fonts">Email Address
+                            <span class="star">*</span>
+                        </label>
+                        <div class="formInput relative">
+                            <div class="form-input-icon form-input-icon-left">
+                                <span class="material-symbols-outlined">
+                                    alternate_email
+                                </span>
+                            </div>
+                            <input class="form-control" type="email" placeholder="Enter your email address"
+                                [(ngModel)]="loginObj.email" #email="ngModel" id="email" name="email" tabindex="1"
+                                required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password" class="form-title-label semibold-fonts">Password <span
+                                class="star">*</span></label>
+                        <div class="formInput relative">
+                            <div class="form-input-icon form-input-icon-left">
+                                <span class="material-symbols-outlined">
+                                    password
+                                </span>
+                            </div>
+                            <input class="form-control" type="password" placeholder="Enter your password" 
+                                [(ngModel)]="loginObj.password" #password="ngModel" id="password" name="password"
+                                tabindex="1" required>
+                            <div class="form-input-icon form-input-icon-right showPassword" (click)="showPassword('password');">
+                                <span class="material-symbols-outlined" *ngIf="!isShowpassword"> 
+                                    visibility
+                                </span>
+                                <span class="material-symbols-outlined" *ngIf="isShowpassword"> 
+                                    visibility_off
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div routerLink="/change-password" class="row-flex jcs">
+                        <div class="forgot-text">
+                            <p class="secondary-color semibold-fonts">Changes Password ?</p>
+                        </div>
+                    </div>
+                    <div >
+                        <button type="submit" class="sangath-template-button w100" style="margin-top : 1rem;" >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

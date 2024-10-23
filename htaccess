@@ -1,0 +1,14 @@
+RewriteEngine On
+
+RewriteBase /beta/admin/
+
+
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ %{ENV:BASE}index.html [QSA,L]
+

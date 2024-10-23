@@ -1,0 +1,64 @@
+<div class="relative">
+    <div class="inner-flex inner-flex-small">
+        <div class="section-title">
+            <h2> Studio Details</h2>
+        </div>
+        <div class="AddWrapper">
+            <div class="container-fluid white-bg border-radius">
+                <form name="addProjectForm" id="addProjectForm" (ngSubmit)="addProject(addProjectForm.form)"
+                    #addProjectForm="ngForm" novalidate class="inner-flex inner-flex-medium">
+                    <div class="inner-flex inner-flex-medium">
+                        <div class="two-col-grid">
+                            <div *ngIf="studioObj.description">
+                                <label for="description" class="form-title-label semibold-fonts">Description <span class="star">*</span></label>
+                                <div class="formInput relative">
+                                    <ck-editor skin="moono-lisa" language="en" [config]="configEditor"
+                                        name="description"  #description="ngModel" required
+                                        [(ngModel)]="studioObj.description">
+                                    </ck-editor>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <label for="media" class="form-title-label semibold-fonts"> Studio Images  </label>
+                                <div class="formInput ImagePreviewBox ImagePreviewBox-2 relative">
+                                    <input class="form-control" type="file" (change)="onMediaChange($event)"
+                                        id="media" name="media"  multiple 
+                                        accept="image/png, image/jpeg">
+                                    <div class="previewWrapper">
+                                        <p style='color : #00000050;'>
+                                            Upload Studio Images
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mediaGrid">
+                            <div *ngFor="let media of mediaArray; let i = index" class="mediaGallery relative">
+                                <span class="material-symbols-outlined" (click)="removeMedia(i , media.id)">
+                                    delete
+                                </span>
+                                <img [src]="media.image" alt="" style="aspect-ratio: 1; object-fit: cover;">
+                            </div>
+                            <div *ngFor="let media of studioObj.image; let i = index" class="mediaGallery relative">
+                                <span class="material-symbols-outlined" (click)="removeimageMedia(i, media.id)">
+                                    delete
+                                </span>
+                                <img [src]="media.image" alt="" style="aspect-ratio: 1; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="three-col-grid">
+                                <button type="submit" class="sangath-template-button w100" style="margin-top : 1rem;" >
+                                    <span class="material-symbols-outlined">
+                                        save
+                                        </span>
+                                    {{isprojectSave ? "Please Wait..." : "Save" }}
+                                </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
